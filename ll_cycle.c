@@ -14,6 +14,7 @@ int ll_has_cycle(node *head) {
     node *slow = head;
     node *fast = head;
     do  {
+        // advance fast pointer by 2 steps, checking for null each time
         if (fast != NULL) {
             fast = fast ->next;
             if (fast != NULL) {
@@ -22,10 +23,12 @@ int ll_has_cycle(node *head) {
                 return 0;
             }
         } else {
+            // if null, then no cycle
             return 0;
         }
         slow = slow -> next;
     } while (slow != fast);
+    // caught our tail
     return 1;
 }
 
